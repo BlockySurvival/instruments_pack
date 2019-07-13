@@ -11,7 +11,7 @@ minetest.register_node ("soundblocks:harp", {
         minetest.sound_play ("soundblocks_harp", {
             pos               = pos ,
             max_hear_distance = 10  ,
-            gain              =  1  ,
+            gain              =  .5  ,
         })
     end,
     node_box = {
@@ -83,7 +83,7 @@ minetest.register_node("soundblocks:gong", {
         minetest.sound_play("soundblocks_gong", {
             pos= pos,
             max_hear_distance = 40,
-            gain = 1,
+            gain = .5,
         })
     end,
     node_box = {
@@ -128,7 +128,7 @@ minetest.register_craftitem ("soundblocks:trumpet", {
         minetest.sound_play ("soundblocks_trumpet", {
             pos = user:getpos()     ,
             max_hear_distance = 40 ,
-            gain              =   1 ,
+            gain              =   .5 ,
         })
     end ,
     groups = {instrument=1}
@@ -153,7 +153,7 @@ minetest.register_craftitem ("soundblocks:fanfare", {
         minetest.sound_play ("soundblocks_fanfare", {
             pos = user:getpos()     ,
             max_hear_distance = 40 ,
-            gain              =   1 ,
+            gain              =   .5 ,
         })
     end ,
     groups = {instrument=1}
@@ -177,7 +177,7 @@ minetest.register_craftitem ("soundblocks:smallhorn", {
         minetest.sound_play ("HornSmall", {
             pos               = user:getpos() ,
             max_hear_distance = 40           ,
-            gain              = 1             ,
+            gain              = .5             ,
         })
     end,
     groups = {instrument=1}
@@ -204,7 +204,7 @@ minetest.register_node("soundblocks:bell_gold", {
         minetest.sound_play("BellGold", {
             pos= pos,
             max_hear_distance = 240,
-            gain = 1,
+            gain = .5,
         })
     end,
     node_box = {
@@ -241,7 +241,7 @@ minetest.register_node("soundblocks:bell", {
         minetest.sound_play("BellLarge", {
             pos= pos,
             max_hear_distance = 240,
-            gain = 1,
+            gain = .5,
         })
     end,
     
@@ -276,7 +276,7 @@ minetest.register_craftitem("soundblocks:ironbellitem", {
         minetest.sound_play ("BellSmall", {
             pos               = user:getpos() ,
             max_hear_distance = 10            ,
-            gain              = 1             ,
+            gain              = .5             ,
         })
     end,
 })
@@ -288,7 +288,7 @@ minetest.register_craftitem("soundblocks:goldbellitem", {
         minetest.sound_play ("BellSmallGold", {
             pos               = user:getpos() ,
             max_hear_distance = 10            ,
-            gain              = 1             ,
+            gain              = .5             ,
         })
     end,
 })

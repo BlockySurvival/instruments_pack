@@ -7,7 +7,7 @@ minetest.register_craftitem("extrahorns:largehorn", {
 		minetest.sound_play("extrahorns_largehorn", {
 			pos = user:get_pos(),
 			max_hear_distance = 45,
-			gain = 1,
+			gain = .5,
 		})
 	end,
 })
@@ -28,7 +28,7 @@ minetest.register_craftitem("extrahorns:warhorn", {
 		minetest.sound_play("extrahorns_warhorn", {
 			pos = user:get_pos(),
 			max_hear_distance = 55,
-			gain = 1.2,
+			gain = .6,
 		})
 	end,
 })
@@ -51,7 +51,7 @@ minetest.register_craftitem("extrahorns:bagpipes", {
 		minetest.sound_play("extrahorns_bagpipe", {
 			pos = user:get_pos(),
 			max_hear_distance = 35,
-			gain = 1,
+			gain = .5,
 		})
 	end,
 })
@@ -74,7 +74,7 @@ minetest.register_craftitem("extrahorns:flute", {
 		minetest.sound_play("extrahorns_flute", {
 			pos = user:get_pos(),
 			max_hear_distance = 10,
-			gain = 1,
+			gain = .5,
 		})
 	end,
 })	
@@ -97,7 +97,7 @@ minetest.register_craftitem("extrahorns:steelflute", {
 		minetest.sound_play("extrahorns_flute", {
 			pos = user:get_pos(),
 			max_hear_distance = 35,
-			gain = 1,
+			gain = .5,
 		})
 	end,
 })	
@@ -143,7 +143,7 @@ minetest.register_node("extrahorns:wardrum", {
                 minetest.sound_play("extrahorns_wardrum", { -- play drum sound
                     pos = player:get_pos(),
                     max_hear_distance = 50,
-                    gain =  2,
+                    gain =  1,
                 })
             end    
         end
@@ -170,7 +170,7 @@ minetest.register_craftitem("extrahorns:triangle", {
 		minetest.sound_play("extrahorns_triangle", {
 			pos = user:get_pos(),
 			max_hear_distance = 10,
-			gain = 1,
+			gain = .5,
 		})
 	end,
 })
