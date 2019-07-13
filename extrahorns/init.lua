@@ -6,7 +6,7 @@ minetest.register_craftitem("extrahorns:largehorn", {
 	on_use = function (itemstack, user)
 		minetest.sound_play("extrahorns_largehorn", {
 			pos = user:get_pos(),
-			max_hear_distance = 450,
+			max_hear_distance = 45,
 			gain = 1,
 		})
 	end,
@@ -27,7 +27,7 @@ minetest.register_craftitem("extrahorns:warhorn", {
 	on_use = function(itemstack, user)
 		minetest.sound_play("extrahorns_warhorn", {
 			pos = user:get_pos(),
-			max_hear_distance = 550,
+			max_hear_distance = 55,
 			gain = 1.2,
 		})
 	end,
@@ -50,7 +50,7 @@ minetest.register_craftitem("extrahorns:bagpipes", {
 	on_use = function (itemstack, user)
 		minetest.sound_play("extrahorns_bagpipe", {
 			pos = user:get_pos(),
-			max_hear_distance = 350,
+			max_hear_distance = 35,
 			gain = 1,
 		})
 	end,
@@ -73,7 +73,7 @@ minetest.register_craftitem("extrahorns:flute", {
 	on_use = function(itemstack, user)
 		minetest.sound_play("extrahorns_flute", {
 			pos = user:get_pos(),
-			max_hear_distance = 100,
+			max_hear_distance = 10,
 			gain = 1,
 		})
 	end,
@@ -96,7 +96,7 @@ minetest.register_craftitem("extrahorns:steelflute", {
 	on_use = function(itemstack, user)
 		minetest.sound_play("extrahorns_flute", {
 			pos = user:get_pos(),
-			max_hear_distance = 350,
+			max_hear_distance = 35,
 			gain = 1,
 		})
 	end,
@@ -142,7 +142,7 @@ minetest.register_node("extrahorns:wardrum", {
             if player:get_wielded_item():get_name() == "extrahorns:drumstick" then -- if holding drumstick
                 minetest.sound_play("extrahorns_wardrum", { -- play drum sound
                     pos = player:get_pos(),
-                    max_hear_distance = 500,
+                    max_hear_distance = 50,
                     gain =  2,
                 })
             end    
@@ -169,7 +169,7 @@ minetest.register_craftitem("extrahorns:triangle", {
 	on_use = function(itemstack, user)
 		minetest.sound_play("extrahorns_triangle", {
 			pos = user:get_pos(),
-			max_hear_distance = 100,
+			max_hear_distance = 10,
 			gain = 1,
 		})
 	end,
