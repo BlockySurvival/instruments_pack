@@ -1,3 +1,10 @@
+soundblocks = {}
+minetest.register_privilege('noinstruments', 'revokes a player\'s ability to play music')
+
+function soundblocks.can_play(player)
+    return player and not minetest.check_player_privs(player:get_player_name(), {noinstruments=true})
+end
+
 minetest.register_node ("soundblocks:harp", {
     description = "Harp",
     tiles       = {
@@ -8,11 +15,13 @@ minetest.register_node ("soundblocks:harp", {
     paramtype   = "light"   ,
     paramtype2  = "facedir" ,
     on_punch = function(pos, node, player, pointed_thing)
-        minetest.sound_play ("soundblocks_harp", {
-            pos               = pos ,
-            max_hear_distance = 10  ,
-            gain              =  .5  ,
-        })
+        if soundblocks.can_play(player) then
+            minetest.sound_play ("soundblocks_harp", {
+                pos               = pos ,
+                max_hear_distance = 10  ,
+                gain              =  .5  ,
+            })
+        end
     end,
     node_box = {
         type = "fixed" ,
@@ -66,7 +75,7 @@ minetest.register_craft ({
     output = "soundblocks:harp",
     recipe = {
 { ""                   , "default:gold_ingot"           , ""                   } ,
-{ "default:gold_ingot" , "soundblocks:harp_strings" , "default:gold_ingot" } ,
+{ "default:gold_ingot" , "soundblocks:harp_strings" ,     "default:gold_ingot" } ,
 { "default:gold_ingot" , "default:gold_ingot"           , ""                   } ,
     }
 })
@@ -80,11 +89,13 @@ minetest.register_node("soundblocks:gong", {
     paramtype = "light",
     paramtype2 = "facedir",
     on_punch = function(pos, node, player, pointed_thing)
-        minetest.sound_play("soundblocks_gong", {
-            pos= pos,
-            max_hear_distance = 40,
-            gain = .5,
-        })
+        if soundblocks.can_play(player) then
+            minetest.sound_play("soundblocks_gong", {
+                pos= pos,
+                max_hear_distance = 40,
+                gain = .5,
+            })
+        end
     end,
     node_box = {
         type = "fixed",
@@ -125,11 +136,13 @@ minetest.register_craftitem ("soundblocks:trumpet", {
     description     = "Trumpet" ,
     inventory_image = "soundblocks_trumpet.png" ,
     on_use          = function (itemstack, user)
-        minetest.sound_play ("soundblocks_trumpet", {
-            pos = user:getpos()     ,
-            max_hear_distance = 40 ,
-            gain              =   .5 ,
-        })
+        if soundblocks.can_play(user) then
+            minetest.sound_play ("soundblocks_trumpet", {
+                pos = user:getpos()     ,
+                max_hear_distance = 40 ,
+                gain              =   .5 ,
+            })
+        end
     end ,
     groups = {instrument=1}
 })
@@ -150,11 +163,13 @@ minetest.register_craftitem ("soundblocks:fanfare", {
     description     = "Fanfare" ,
     inventory_image = "soundblocks_fanfare.png" ,
     on_use          = function (itemstack, user)
-        minetest.sound_play ("soundblocks_fanfare", {
-            pos = user:getpos()     ,
-            max_hear_distance = 40 ,
-            gain              =   .5 ,
-        })
+        if soundblocks.can_play(user) then
+            minetest.sound_play ("soundblocks_fanfare", {
+                pos = user:getpos()     ,
+                max_hear_distance = 40 ,
+                gain              =   .5 ,
+            })
+        end
     end ,
     groups = {instrument=1}
 })
@@ -174,11 +189,13 @@ minetest.register_craftitem ("soundblocks:smallhorn", {
     description     = "Small Horn"         ,
     inventory_image = "soundblocks_horn.png" ,
     on_use          = function (itemstack, user)
-        minetest.sound_play ("HornSmall", {
-            pos               = user:getpos() ,
-            max_hear_distance = 40           ,
-            gain              = .5             ,
-        })
+        if soundblocks.can_play(user) then
+            minetest.sound_play ("HornSmall", {
+                pos               = user:getpos() ,
+                max_hear_distance = 40           ,
+                gain              = .5             ,
+            })
+        end
     end,
     groups = {instrument=1}
 })
@@ -201,11 +218,13 @@ minetest.register_node("soundblocks:bell_gold", {
     paramtype = "light",
     paramtype2 = "facedir",
     on_punch = function(pos, node, player, pointed_thing)
-        minetest.sound_play("BellGold", {
-            pos= pos,
-            max_hear_distance = 240,
-            gain = .5,
-        })
+        if soundblocks.can_play(player) then
+            minetest.sound_play("BellGold", {
+                pos= pos,
+                max_hear_distance = 240,
+                gain = .5,
+            })
+        end
     end,
     node_box = {
         type = "fixed",
@@ -238,13 +257,15 @@ minetest.register_node("soundblocks:bell", {
     paramtype = "light",
     paramtype2 = "facedir",
     on_punch = function(pos, node, player, pointed_thing)
-        minetest.sound_play("BellLarge", {
-            pos= pos,
-            max_hear_distance = 240,
-            gain = .5,
-        })
+        if soundblocks.can_play(player) then
+            minetest.sound_play("BellLarge", {
+                pos= pos,
+                max_hear_distance = 240,
+                gain = .5,
+            })
+        end
     end,
-    
+
     node_box = {
         type = "fixed",
         fixed = {
@@ -273,11 +294,13 @@ minetest.register_craftitem("soundblocks:ironbellitem", {
     description = "Small Iron Bell",
     inventory_image = "soundblocks_ironbellitem.png",
     on_use = function (itemstack, user)
-        minetest.sound_play ("BellSmall", {
-            pos               = user:getpos() ,
-            max_hear_distance = 10            ,
-            gain              = .5             ,
-        })
+        if soundblocks.can_play(user) then
+            minetest.sound_play ("BellSmall", {
+                pos               = user:getpos() ,
+                max_hear_distance = 10            ,
+                gain              = .5             ,
+            })
+        end
     end,
 })
 
@@ -285,11 +308,13 @@ minetest.register_craftitem("soundblocks:goldbellitem", {
     description = "Small Golden Bell",
     inventory_image = "soundblocks_goldbellitem.png",
     on_use = function (itemstack, user)
-        minetest.sound_play ("BellSmallGold", {
-            pos               = user:getpos() ,
-            max_hear_distance = 10            ,
-            gain              = .5             ,
-        })
+        if soundblocks.can_play(user) then
+            minetest.sound_play ("BellSmallGold", {
+                pos               = user:getpos() ,
+                max_hear_distance = 10            ,
+                gain              = .5             ,
+            })
+        end
     end,
 })
 

@@ -2,13 +2,15 @@
 minetest.register_craftitem("extrahorns:largehorn", {
 	description = "Large Horn",
 	inventory_image = "extrahorns_largehorn.png",
-	groups = {instrument = 1},	
+	groups = {instrument = 1},
 	on_use = function (itemstack, user)
-		minetest.sound_play("extrahorns_largehorn", {
-			pos = user:get_pos(),
-			max_hear_distance = 45,
-			gain = .5,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_largehorn", {
+				pos = user:get_pos(),
+				max_hear_distance = 45,
+				gain = .5,
+			})
+		end
 	end,
 })
 
@@ -23,13 +25,15 @@ minetest.register_craft({
 minetest.register_craftitem("extrahorns:warhorn", {
 	description = "War Horn" ,
 	inventory_image = "extrahorns_warhorn.png",
-	groups = {instrument = 1},	
+	groups = {instrument = 1},
 	on_use = function(itemstack, user)
-		minetest.sound_play("extrahorns_warhorn", {
-			pos = user:get_pos(),
-			max_hear_distance = 55,
-			gain = .6,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_warhorn", {
+				pos = user:get_pos(),
+				max_hear_distance = 55,
+				gain = .6,
+			})
+		end
 	end,
 })
 
@@ -46,13 +50,15 @@ minetest.register_craft({
 minetest.register_craftitem("extrahorns:bagpipes", {
 	description = "Bagpipes",
 	inventory_image = "extrahorns_bagpipe.png" ,
-	groups = {instrument = 1},	
+	groups = {instrument = 1},
 	on_use = function (itemstack, user)
-		minetest.sound_play("extrahorns_bagpipe", {
-			pos = user:get_pos(),
-			max_hear_distance = 35,
-			gain = .5,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_bagpipe", {
+				pos = user:get_pos(),
+				max_hear_distance = 35,
+				gain = .5,
+			})
+		end
 	end,
 })
 
@@ -71,13 +77,15 @@ minetest.register_craftitem("extrahorns:flute", {
 	inventory_image = "extrahorns_flute.png",
 	groups = {instrument = 1},
 	on_use = function(itemstack, user)
-		minetest.sound_play("extrahorns_flute", {
-			pos = user:get_pos(),
-			max_hear_distance = 10,
-			gain = .5,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_flute", {
+				pos = user:get_pos(),
+				max_hear_distance = 10,
+				gain = .5,
+			})
+		end
 	end,
-})	
+})
 
 minetest.register_craft({
 	output = "extrahorns:flute",
@@ -86,7 +94,7 @@ minetest.register_craft({
 		{ "", "default:stick", ""},
 		{ "", "", "default:stick"},
 	}
-})	
+})
 
 -- steelflute
 minetest.register_craftitem("extrahorns:steelflute", {
@@ -94,13 +102,15 @@ minetest.register_craftitem("extrahorns:steelflute", {
 	inventory_image = "extrahorns_steelflute.png",
 	groups = {instrument = 1},
 	on_use = function(itemstack, user)
-		minetest.sound_play("extrahorns_flute", {
-			pos = user:get_pos(),
-			max_hear_distance = 35,
-			gain = .5,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_flute", {
+				pos = user:get_pos(),
+				max_hear_distance = 35,
+				gain = .5,
+			})
+		end
 	end,
-})	
+})
 
 minetest.register_craft({
 	output = "extrahorns:steelflute",
@@ -109,13 +119,13 @@ minetest.register_craft({
 		{"", "default:steel_ingot", ""},
 		{"", "", "default:steel_ingot"},
 	}
-})	
+})
 
 --drumstick
 minetest.register_craftitem("extrahorns:drumstick", {
 	description = "drumstick",
 	inventory_image = "extrahorns_drumstick.png",
-})	
+})
 
 minetest.register_craft({
 	output = "extrahorns:drumstick",
@@ -124,7 +134,7 @@ minetest.register_craft({
 		{"", "default:stick", ""},
 		{"", "", "default:stick"},
 	}
-})	
+})
 
 -- drum
 minetest.register_node("extrahorns:wardrum", {
@@ -136,16 +146,18 @@ minetest.register_node("extrahorns:wardrum", {
         "extrahorns_drum_side.png",
         "extrahorns_drum_side.png",
         "extrahorns_drum_side.png",
-    },   
+    },
     on_punch = function(pos, node, player, pointed_thing) -- if its punched
         if player then -- if the entity that punched it is a player
             if player:get_wielded_item():get_name() == "extrahorns:drumstick" then -- if holding drumstick
-                minetest.sound_play("extrahorns_wardrum", { -- play drum sound
-                    pos = player:get_pos(),
-                    max_hear_distance = 50,
-                    gain =  1,
-                })
-            end    
+                if soundblocks.can_play(player) then
+					minetest.sound_play("extrahorns_wardrum", { -- play drum sound
+						pos = player:get_pos(),
+						max_hear_distance = 50,
+						gain =  1,
+					})
+				end
+            end
         end
         end,
     groups = {instrument = 1, choppy = 3} -- need axe to break it
@@ -158,20 +170,22 @@ minetest.register_craft({
 		{"group:wood", "", "group:wood"},
 		{"group:wood", "group:wood", "group:wood"},
 	}
-})	
+})
 
 -- triangle
 
 minetest.register_craftitem("extrahorns:triangle", {
 	description = "Triangle",
 	inventory_image = "extrahorns_triangle.png",
-	groups = {instrument = 1},	
+	groups = {instrument = 1},
 	on_use = function(itemstack, user)
-		minetest.sound_play("extrahorns_triangle", {
-			pos = user:get_pos(),
-			max_hear_distance = 10,
-			gain = .5,
-		})
+		if soundblocks.can_play(user) then
+			minetest.sound_play("extrahorns_triangle", {
+				pos = user:get_pos(),
+				max_hear_distance = 10,
+				gain = .5,
+			})
+		end
 	end,
 })
 
@@ -182,4 +196,4 @@ minetest.register_craft({
 		{"", "default:steel_ingot", ""},
 		{"default:steel_ingot", "default:steel_ingot", "default:steel_ingot"},
 	}
-})	
+})
