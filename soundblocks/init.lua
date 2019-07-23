@@ -1,8 +1,12 @@
 soundblocks = {}
-minetest.register_privilege('noinstruments', 'revokes a player\'s ability to play music')
+minetest.register_privilege('instruments', 'grants ability to play music')
 
 function soundblocks.can_play(player)
-    return player and not minetest.check_player_privs(player:get_player_name(), {noinstruments=true})
+    return (
+        player and
+        player.get_player_name and
+        minetest.check_player_privs(player:get_player_name(), {instruments=true})
+    )
 end
 
 minetest.register_node ("soundblocks:harp", {
